@@ -4,14 +4,22 @@ const servicoAgendamento = require('../services');
 router.get('/agendamentos', 
     servicoAgendamento.carregarTodosAgendamentos
 
-});
+);
 
-router.get('/agendamento/:id',
+router.get('/agendamentos/:id',
     servicoAgendamento.carregarAgendamento
+);
+
+router.put('/agendamentos/:id',
+    servicoAgendamento.alterarAgendamento
 );
 
 router.post('/agendamentos',
     servicoAgendamento.criarAgendamento
-)
+);
+
+router.delete('/agendamento/:id',
+    servicoAgendamento.deletarAgendamento
+);
 
 module.exports = router;

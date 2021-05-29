@@ -1,27 +1,29 @@
-const { removeAllListeners } = require('nodemon');
 const TabelaAgendamento = require('./TabelaAgendamento');
+const NaoEncontrado = require
 
 module.exports = {
-    async listar(){
+    async listar() {
         try {
-             result = await TabelaAgendamento.findAll({
+            result = await TabelaAgendamento.findAll({
                 raw: true,
             });
-            return result;
-
+            return result
         } catch (error) {
             throw error
         }
     },
-    async buscarPorPk(id){
+
+    async buscarPorPK(id) {
         try {
             result = await TabelaAgendamento.findByPk(id);
-            return result;
+            if(!result)
+            return result
         } catch (error) {
             throw error
         }
     },
-    async adicionar(agendamento){
+
+    async adicionar(agendamento) {
         try {
             result = await TabelaAgendamento.create(agendamento);
             return result
@@ -29,30 +31,30 @@ module.exports = {
             throw error
         }
     },
-    async atualizar(id, dados){
-        try{
-            result = await TabelaAgendamento.update(dados,
+
+    async atualizar(id, dados) {
+        try {
+            result = await TabelaAgendamento.update(dados, 
                 {
                     where: {
                         id:id
                     }
                 }
-                );
-                return result;
-        }catch(error){
+            );
+            return result
+        } catch (error) {
             throw error
         }
     },
-    async removeAllListeners(id){
+
+    async remover(id) {
         try {
             result = await TabelaAgendamento.destroy({
                 where: {
                     id:id
                 }
-            }
-
-            );
-            return result;
+            });
+            return result
         } catch (error) {
             throw error
         }
