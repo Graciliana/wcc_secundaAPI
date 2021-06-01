@@ -1,4 +1,4 @@
-const SequelizeAgendamento = require('../models/SequelizeAgendamento');
+const SequelizeAgendamento = require('../../models/agendamentos/SequelizeAgendamento');
 const Agendamento = require('./Agendamento');
 const SerializarAgendamento = require('../shared/Seriaçlizar').SerializarAgendamento;
 

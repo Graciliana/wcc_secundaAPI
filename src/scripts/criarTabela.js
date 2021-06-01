@@ -1,4 +1,4 @@
-const TabelaSequelize = require('../models/TabelaAgendamento');
+const TabelaSequelize = require('../models/agendamentos/TabelaAgendamento');
 
 TabelaSequelize.sync()
     .then(()=> {

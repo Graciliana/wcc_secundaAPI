@@ -1,4 +1,4 @@
-const sequelizeAgendamento = require('../models/SequelizeAgendamento')
+const sequelizeAgendamento = require('../models/agendamentos/SequelizeAgendamento')
 const moment = require('moment');
 class Agendamento {
     constructor ({id, nome_cliente, nome_servico, status, data_agendamento,
@@ -64,6 +64,17 @@ class Agendamento {
             if(typeof valor !== 'string' || valor.length === 0){
                 throw new Error('Campo inválido')
             }
+            if(typeof valor !=='string' || valor.length  > 60){
+                throw new Error('Quantidade maxima de carcteres ultrapassado')
+            }
+        });
+        const camposObrigatorios = ['nome_cliente', 'nome_servico']
+        camposObrigatorios.forEach((campo) => {
+            const valor = this[campo];
+            if(typeof valor !== 'String' || valor.length < 2){
+                throw new Error('Quantidade minima de caracteres não validos')
+            }
+
         });
     };
 
