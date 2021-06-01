@@ -1,24 +1,27 @@
 const TabelaAgendamento = require('./TabelaAgendamento');
-const NaoEncontrado = require
+const NaoEncontrado = require('../errors/NaoEncontrado');
 
 module.exports = {
-    async listar() {
-        try {
+    async listar (){
+        try{
             result = await TabelaAgendamento.findAll({
                 raw: true,
             });
             return result
-        } catch (error) {
+        } catch (error){
             throw error
         }
     },
 
-    async buscarPorPK(id) {
-        try {
+    async buscarPorPK (id) {
+        try{
             result = await TabelaAgendamento.findByPk(id);
-            if(!result)
+            
+            if(!result){
+                throw new NaoEncontrado('agendamento');
+            }
             return result
-        } catch (error) {
+        } catch (error){
             throw error
         }
     },
@@ -32,26 +35,26 @@ module.exports = {
         }
     },
 
-    async atualizar(id, dados) {
+    async atualizar(id, dados){
         try {
-            result = await TabelaAgendamento.update(dados, 
+            result = await TabelaAgendamento.update(dados,
                 {
                     where: {
                         id:id
                     }
-                }
-            );
-            return result
+            }
+        );
+        return result
         } catch (error) {
             throw error
         }
     },
 
-    async remover(id) {
+    async remover (id) {
         try {
             result = await TabelaAgendamento.destroy({
                 where: {
-                    id:id
+                    id : id
                 }
             });
             return result

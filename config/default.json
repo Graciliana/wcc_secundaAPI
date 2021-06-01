@@ -1,6 +1,6 @@
 {
     "mysql": {
-        "database" : "wccagenda",
+        "database" : "salao",
         "user" : "root",
         "password" : "lokaPORbike88",
         "host" : "127.0.0.1",

@@ -1,4 +1,4 @@
-const configExpress =  require('./config/configExpress');
+const configExpress = require('./config/configExpress');
 const config = require('config');
 const instanciadb = require('./db');
 
@@ -6,16 +6,13 @@ const instanciadb = require('./db');
     try {
         await instanciadb.sync()
 
- let app = configExpress();
+        app = configExpress()
 
-app.listen( config.get('api.port'), () =>{
-    console.log('Servidor Rodando')
-}); 
+        app.listen(config.get('api.port'), () => {
+        console.log('Servidor Rodando!')
+        });
     } catch (error) {
         throw error;
     };
 
 })();
-
-
-
